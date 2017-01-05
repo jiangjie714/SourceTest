@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fufang.bi.mapper.BiStorageAnalysisDayMapper" >
+  <resultMap id="BaseResultMap" type="com.fufang.bi.entity.BiStorageAnalysisDay" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="PHARMACY_ID" property="pharmacyId" jdbcType="INTEGER" />
+    <result column="STAT_TIME" property="statTime" jdbcType="TIMESTAMP" />
+    <result column="MATERIAL_ID" property="materialId" jdbcType="INTEGER" />
+    <result column="qcStorage" property="qcstorage" jdbcType="INTEGER" />
+    <result column="qcAmount" property="qcamount" jdbcType="DOUBLE" />
+    <result column="cgrkCount" property="cgrkcount" jdbcType="INTEGER" />
+    <result column="cgrkAmount" property="cgrkamount" jdbcType="DOUBLE" />
+    <result column="pjrkCount" property="pjrkcount" jdbcType="INTEGER" />
+    <result column="pjrkAmount" property="pjrkamount" jdbcType="DOUBLE" />
+    <result column="pyrkCount" property="pyrkcount" jdbcType="INTEGER" />
+    <result column="pyrkAmount" property="pyrkamount" jdbcType="DOUBLE" />
+    <result column="qtrkCount" property="qtrkcount" jdbcType="INTEGER" />
+    <result column="qtrkAmount" property="qtrkamount" jdbcType="DOUBLE" />
+    <result column="clrkCount" property="clrkcount" jdbcType="INTEGER" />
+    <result column="clrkAmount" property="clrkamount" jdbcType="DOUBLE" />
+    <result column="qcrkCount" property="qcrkcount" jdbcType="INTEGER" />
+    <result column="qcrkAmount" property="qcrkamount" jdbcType="DOUBLE" />
+    <result column="xsckCount" property="xsckcount" jdbcType="INTEGER" />
+    <result column="xsckAmount" property="xsckamount" jdbcType="DOUBLE" />
+    <result column="phckCount" property="phckcount" jdbcType="INTEGER" />
+    <result column="phckAmount" property="phckamount" jdbcType="DOUBLE" />
+    <result column="pkckCount" property="pkckcount" jdbcType="INTEGER" />
+    <result column="pkckAmount" property="pkckamount" jdbcType="DOUBLE" />
+    <result column="qtckCount" property="qtckcount" jdbcType="INTEGER" />
+    <result column="qtckAmount" property="qtckamount" jdbcType="DOUBLE" />
+    <result column="clckCount" property="clckcount" jdbcType="INTEGER" />
+    <result column="clckAmount" property="clckamount" jdbcType="DOUBLE" />
+    <result column="qdckCount" property="qdckcount" jdbcType="INTEGER" />
+    <result column="qdckAmount" property="qdckamount" jdbcType="DOUBLE" />
+    <result column="xhckCount" property="xhckcount" jdbcType="INTEGER" />
+    <result column="xhckAmount" property="xhckamount" jdbcType="DOUBLE" />
+    <result column="qmStorage" property="qmstorage" jdbcType="INTEGER" />
+    <result column="qmAmount" property="qmamount" jdbcType="DOUBLE" />
+    <result column="tax_type" property="taxType" jdbcType="INTEGER" />
+    <result column="pharmacy_type" property="pharmacyType" jdbcType="INTEGER" />
+  </resultMap>
+  
+    <resultMap id="StorageTotalMap" type="com.fufang.bi.entity.StorageTotal" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="pharmacyCode" property="pharmacycode" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="PHARMACY_ID" property="pharmacyid" jdbcType="INTEGER" />
+    <result column="qckc" property="qckc" jdbcType="INTEGER" />
+    <result column="qckcje" property="qckcje" jdbcType="DOUBLE" />
+    <result column="qjrk" property="qjrk" jdbcType="INTEGER" />
+    <result column="qjrkje" property="qjrkje" jdbcType="DOUBLE" />
+    <result column="qjck" property="qjck" jdbcType="INTEGER" />
+    <result column="qjckje" property="qjckje" jdbcType="DOUBLE" />
+    <result column="qmkc" property="qmkc" jdbcType="INTEGER" />
+    <result column="qmkcje" property="qmkcje" jdbcType="DOUBLE" />
+  </resultMap>
+  
+  
+  <resultMap id="StorageMilde" type="com.fufang.bi.entity.StorageMilde">
+  	<result column="id" property="id" jdbcType="INTEGER" />
+    <result column="pharmacyid" jdbcType="INTEGER" property="pharmacyid" />
+    <result column="pharmacycode" jdbcType="NVARCHAR" property="pharmacycode" />
+    <result column="name" jdbcType="NVARCHAR" property="name" />
+    <result column="materialid" jdbcType="INTEGER" property="materialid" />
+    <result column="matcode" jdbcType="NVARCHAR" property="matcode" />
+    <result column="barcode" jdbcType="NVARCHAR" property="barcode" />
+    <result column="matname" jdbcType="NVARCHAR" property="matname" />
+    <result column="commonName" jdbcType="NVARCHAR" property="commonname" />
+    <result column="dosage" jdbcType="NVARCHAR" property="dosage" />
+    <result column="spec" jdbcType="NVARCHAR" property="spec" />
+    <result column="unitName" jdbcType="NVARCHAR" property="unitname" />
+    <result column="manufname" jdbcType="NVARCHAR" property="manufname" />
+    <result column="productArea" jdbcType="NVARCHAR" property="productarea" />
+    <result column="licenseNum" jdbcType="NVARCHAR" property="licensenum" />
+    <result column="retail" jdbcType="DOUBLE" property="retail" />
+    <result column="qckc" jdbcType="INTEGER" property="qckc" />
+    <result column="qckcje" jdbcType="DOUBLE" property="qckcje" />
+    <result column="qjrk" jdbcType="INTEGER" property="qjrk" />
+    <result column="qjrkje" jdbcType="DOUBLE" property="qjrkje" />
+    <result column="qjck" jdbcType="INTEGER" property="qjck" />
+    <result column="qjckje" jdbcType="DOUBLE" property="qjckje" />
+    <result column="qmkc" jdbcType="INTEGER" property="qmkc" />
+    <result column="qmkcje" jdbcType="DOUBLE" property="qmkcje" />
+  </resultMap>
+  
+  <resultMap id="StorageDetail" type="com.fufang.bi.entity.StorageDetail">
+  	<result column="id" property="id" jdbcType="INTEGER" />
+    <result column="pharmacyid" jdbcType="INTEGER" property="pharmacyid" />
+    <result column="pharmacycode" jdbcType="NVARCHAR" property="pharmacycode" />
+    <result column="name" jdbcType="NVARCHAR" property="name" />
+    <result column="materialid" jdbcType="INTEGER" property="materialid" />
+    <result column="matcode" jdbcType="NVARCHAR" property="matcode" />
+    <result column="barcode" jdbcType="NVARCHAR" property="barcode" />
+    <result column="matname" jdbcType="NVARCHAR" property="matname" />
+    <result column="commonName" jdbcType="NVARCHAR" property="commonname" />
+    <result column="dosage" jdbcType="NVARCHAR" property="dosage" />
+    <result column="spec" jdbcType="NVARCHAR" property="spec" />
+    <result column="unitName" jdbcType="NVARCHAR" property="unitname" />
+    <result column="manufname" jdbcType="NVARCHAR" property="manufname" />
+    <result column="productArea" jdbcType="NVARCHAR" property="productarea" />
+    <result column="licenseNum" jdbcType="NVARCHAR" property="licensenum" />
+    <result column="retail" jdbcType="DOUBLE" property="retail" />
+    <result column="qckc" jdbcType="INTEGER" property="qckc" />
+    <result column="qckcje" jdbcType="DOUBLE" property="qckcje" />
+  	<result column="cg" jdbcType="INTEGER" property="cg" />
+    <result column="cgje" jdbcType="DOUBLE" property="cgje" />
+    <result column="pyrk" jdbcType="INTEGER" property="pyrk" />
+    <result column="pyrkje" jdbcType="DOUBLE" property="pyrkje" />
+    <result column="qtrk" jdbcType="INTEGER" property="qtrk" />
+    <result column="qtrkje" jdbcType="DOUBLE" property="qtrkje" />
+    <result column="clrk" jdbcType="INTEGER" property="clrk" />
+    <result column="clrkje" jdbcType="DOUBLE" property="clrkje" />
+    <result column="psrk" jdbcType="INTEGER" property="psrk" />
+    <result column="psrkje" jdbcType="DOUBLE" property="psrkje" />
+    <result column="xsck" jdbcType="INTEGER" property="xsck" />
+    <result column="xsckje" jdbcType="DOUBLE" property="xsckje" />
+    <result column="pkck" jdbcType="INTEGER" property="pkck" />
+    <result column="pkckje" jdbcType="DOUBLE" property="pkckje" />
+    <result column="qtck" jdbcType="INTEGER" property="qtck" />
+    <result column="qtckje" jdbcType="DOUBLE" property="qtckje" />
+    <result column="clck" jdbcType="INTEGER" property="clck" />
+    <result column="clckje" jdbcType="DOUBLE" property="clckje" />
+    <result column="psck" jdbcType="INTEGER" property="psck" />
+    <result column="psckje" jdbcType="DOUBLE" property="psckje" />
+    <result column="qdck" jdbcType="INTEGER" property="qdck" />
+    <result column="qdckje" jdbcType="DOUBLE" property="qdckje" />
+    <result column="xhck" jdbcType="INTEGER" property="xhck" />
+    <result column="xhckje" jdbcType="DOUBLE" property="xhckje" />
+    <result column="qmkc" jdbcType="INTEGER" property="qmkc" />
+    <result column="qmkcje" jdbcType="DOUBLE" property="qmkcje" />
+  </resultMap>
+  
+  
+  <sql id="findAllCpharmacy_base_de">
+  <![CDATA[ 
+  	 select ROW_NUMBER()   over( ORDER  by a.id  ) as id , a.id as pharmacyId,a.pharmacyCode,a.name,
+		isnull( b.shu,0) as qckc,
+		cast ( isnull( b.amount, 0) as decimal(18,2)  ) as qckcje,
+
+		isnull( c.shu,0) as qjrk,
+		cast ( isnull( c.amount,0)  as decimal(18,2)  ) as qjrkje,
+
+		isnull( d.shu,0) as qjck,
+		cast (  isnull( d.amount,0) as decimal(18,2)  ) as qjckje,
+
+		isnull( e.shu,0) as qmkc,
+		cast ( isnull( e.amount ,0) as decimal(18,2)  ) as qmkcje
+		
+		from (
+		
+		select * from (
+   			SELECT   id,a.pharmacyCode ,name,pinyin
+  			FROM chain_pharmacy  a where a.id=#{id } or a.parentId=#{id }  
+  			and a.remark<>2 and a.name not like '%测试%'
+  			) t
+  	 ]]>
+  	 <trim prefix="WHERE" prefixOverrides="AND|OR">
+  	 <if test="pharmacyCode != null  and pharmacyCode !='' ">
+  	 	<![CDATA[ and  t.pharmacyCode like '%' +  #{pharmacyCode }  + '%']]>
+  	 </if>
+  	 
+  	 <if test="name != null  and name !='' ">
+  	 	<![CDATA[ and  t.name like '%'+#{name}+'%' ]]>
+  	 </if>
+  	 <if test="pinyin != null  and pinyin !='' ">
+  	 	<![CDATA[ and  t.pinyin like '%'+#{pinyin}+'%']]>
+  	 </if>
+  	 
+  	 </trim>
+  	 <![CDATA[ 
+
+	) a 
+	left join
+	(
+ 		select tmp.PHARMACY_ID,  ISNULL(( ISNULL( tmp.shu,0) -ISNULL(t.shu ,0) ),0 ) as shu , ISNULL(( ISNULL(tmp.amount,0) -ISNULL(t.amount,0)),0 )as amount from (
+ 		select t.PHARMACY_ID,  isnull( SUM(t.count),0) as shu ,isnull(  SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+
+  		cast (t.STAT_TIME as date) < #{start_time } and t.direction=1
+ 		group by  t.PHARMACY_ID
+ 	) tmp left join
+ 	(
+   		select t.PHARMACY_ID, isnull( SUM(t.count),0) as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+
+  		cast (t.STAT_TIME as date) < #{start_time } and t.direction=0
+ 		group by  t.PHARMACY_ID
+  	) t on tmp.PHARMACY_ID=t.PHARMACY_ID 
+	) b
+ 	on a.id=b.PHARMACY_ID 
+
+	left join
+	(
+	select t.PHARMACY_ID, SUM(t.count) as shu , SUM(${amount}) amount from BI_STORAGE_ANALYSIS_DAY t where
+
+ 	cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } and t.direction=1
+ 	group by  t.PHARMACY_ID
+	) c
+ 	on a.id=c.PHARMACY_ID 
+
+
+	left join
+	(
+	select t.PHARMACY_ID, SUM(t.count) as shu , SUM(${amount}) amount from BI_STORAGE_ANALYSIS_DAY t where
+
+ 	cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } and t.direction=0
+ 	group by  t.PHARMACY_ID
+	) d
+ 	on a.id=d.PHARMACY_ID 
+
+
+	left join
+	(
+ 	select tmp.PHARMACY_ID,  ISNULL(( ISNULL( tmp.shu,0) -ISNULL(t.shu,0)),0 ) as shu , ISNULL(( ISNULL(tmp.amount,0) -ISNULL(t.amount,0)),0 )as amount from (
+ 	select t.PHARMACY_ID,  isnull( SUM(t.count),0) as shu ,isnull(  SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+
+ 	cast (t.STAT_TIME as date) <= #{end_time } and t.direction=1
+ 	group by  t.PHARMACY_ID
+ 	) tmp left join
+ 	(
+  	 select t.PHARMACY_ID, isnull( SUM(t.count),0) as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+ 
+  	cast (t.STAT_TIME as date) <= #{end_time } and t.direction=0
+ 	group by  t.PHARMACY_ID
+  	) t on tmp.PHARMACY_ID=t.PHARMACY_ID  
+	) e
+ 	on a.id=e.PHARMACY_ID 
+ 	]]>
+  
+  </sql>
+  
+  <sql id ="findAllCpharmacy_base">
+   <![CDATA[
+   select ROW_NUMBER()   over( ORDER  by a.id ) as id  , a.id as pharmacyId,a.pharmacyCode,a.name,
+   isnull (dbo.getQcCount(a.id,cast(#{start_time } as date) ,1,#{type}),0) as qckc,
+  
+   cast ( 
+  	isnull (dbo.getQcCount(a.id,cast(#{start_time } as date) ,2,#{type}) ,0)
+   		as DECIMAL(18,2))  as qckcje ,
+   		
+   isnull (b.shu ,0) as qjrk,
+   cast (  isnull (b.amount,0) as DECIMAL(18,2)) as qjrkje, 
+   isnull (c.shu ,0) as qjck,
+   cast (  isnull (c.amount,0) as DECIMAL(18,2)) as qjckje,
+   isnull (dbo.getQcCount(a.id,cast(#{end_time } as date) ,-1,#{type}),0) as qmkc,
+   cast ( 
+     isnull (dbo.getQcCount(a.id,cast(#{end_time } as date) ,-2,#{type}),0) 
+     as DECIMAL(18,2)) as qmkcje
+   
+    from (
+    select * from (
+   	SELECT   id,a.pharmacyCode ,name
+  	FROM chain_pharmacy  a where a.id=#{id } or a.parentId=#{id }  
+  	and a.remark<>2 and a.name not like '%测试%'
+  	) t
+  	 ]]>
+  	 <trim prefix="WHERE" prefixOverrides="AND|OR">
+  	 <if test="pharmacyCode != null  and pharmacyCode !='' ">
+  	 	<![CDATA[ and  t.pharmacyCode like '%' +  #{pharmacyCode }  + '%' ]]>
+  	 </if>
+  	 
+  	 <if test="name != null  and name !='' ">
+  	 	<![CDATA[ and  t.name like '%'+ #{name} +'%' ]]>
+  	 </if>
+  	 </trim>
+  	 <![CDATA[ 
+  	) a
+   left join (
+	select t.PHARMACY_ID, SUM( t.count) as shu,SUM(${amount}) as amount  from  BI_STORAGE_ANALYSIS_DAY  t 
+	where  t.direction=1 and cast (t.STAT_TIME as date)  between  #{start_time }  and #{end_time }
+	group by t.PHARMACY_ID
+ 	)  b on a.id=b.PHARMACY_ID
+ 
+ 	left join 
+ 	(
+   	select t.PHARMACY_ID, SUM( t.count) as shu,SUM(${amount}) as amount  from  BI_STORAGE_ANALYSIS_DAY  t 
+	where  t.direction=0 and cast (t.STAT_TIME as date)  between  #{start_time }  and #{end_time }
+	group by t.PHARMACY_ID
+ 	)c on a.id=c.PHARMACY_ID
+ 	]]>
+ 	
+  </sql>
+  
+  <select id="findAllCpharmacyCount" resultType="int" parameterType="java.util.Map">
+  	<![CDATA[ select count(rs.id) as shu from (  ]]>
+  		<include refid="findAllCpharmacy_base_de" />
+	<![CDATA[  ) rs  ]]>
+  </select>
+  
+  <select id="findAllCpharmacy" resultMap="StorageTotalMap" parameterType="java.util.Map" >
+  	<![CDATA[ select * from (   ]]>
+    <include refid="findAllCpharmacy_base_de" />
+    <![CDATA[ ) rs  where  rs.id >  #{ start} and rs.id <= #{end} ]]>
+  </select>
+  
+  <select id="findAllCpharmacySum" resultMap="StorageTotalMap" parameterType="java.util.Map"  >
+  	<![CDATA[
+  	 select  isnull( sum(rs.qckc),0)  as qckc,  cast ( isnull( sum(rs.qckcje),0) as DECIMAL(18,2)) as qckcje ,
+  	 sum(rs.qjrk)as qjrk ,  cast ( isnull(sum(rs.qjrkje),0) as DECIMAL(18,2)) as qjrkje ,
+  	 sum(rs.qjck)as qjck , cast ( isnull( sum(rs.qjckje) ,0) as DECIMAL(18,2)) as qjckje ,
+  	 sum(rs.qmkc)as qmkc , cast ( isnull( sum(rs.qmkcje),0)  as DECIMAL(18,2)) as qmkcje  from ( ]]>
+  	 <include refid="findAllCpharmacy_base_de" />
+  	<![CDATA[	) rs ]]>
+  </select>
+  
+  <select id="findAllCpharmacyExcel" resultMap="StorageTotalMap" parameterType="java.util.Map" >
+ 	 <![CDATA[ select * from ( ]]>
+ 	 <include refid="findAllCpharmacy_base_de" />
+ 	 <![CDATA[ ) rs ]]>
+  </select>
+  
+  <sql  id="findAllCpharmacyMilde_base" >
+  <![CDATA[
+  	 select ROW_NUMBER()   over( ORDER  by a.pharmacyid ,a.materialid ) as id , a.*,
+		isnull( b.shu,0) as qckc,
+		cast ( isnull( b.amount, 0) as decimal(18,2)  ) as qckcje,
+
+		isnull( c.shu,0) as qjrk,
+		cast ( isnull( c.amount,0)  as decimal(18,2)  ) as qjrkje,
+
+		isnull( d.shu,0) as qjck,
+		cast (  isnull( d.amount,0) as decimal(18,2)  ) as qjckje,
+
+		isnull( e.shu,0) as qmkc,
+		cast ( isnull( e.amount ,0) as decimal(18,2)  ) as qmkcje
+		from (
+		
+		
+		select p.pharmacyid,p.pharmacyPy,bs.MATERIAL_ID materialid,
+		p.pharmacyCode,
+		p.name,
+		isnull(w.matCode, '') AS matcode,
+		isnull(w.barcode, '') AS barcode,
+		isnull(w.name, '') AS matname,
+		isnull(w.commonName, '') AS commonname,
+		isnull(w.dosage, '') AS dosage,
+		isnull(w.spec, '') AS spec,
+		isnull(u.name, '') AS unitname,
+		isnull(w.manufName, '') AS manufname,
+		isnull(w.productArea, '') AS productarea,
+		isnull(w.licenseNum, '') AS licensenum,
+		isnull(s.retail, 0.00) AS retail,
+		isnull(w.pinyin, '') AS py
+	from
+ 		(
+ 			select id pharmacyid,pharmacyCode,name,parentId,pinyin as pharmacyPy from chain_pharmacy 
+ 			
+	]]>  
+			<trim prefix="WHERE" prefixOverrides="AND|OR">
+		   	
+		    		<if test="needs !=null and needs ==1 and pharmacyCode != null  and pharmacyCode !=''">
+		   				<![CDATA[	and  pharmacyCode  like '%' +  #{pharmacyCode }   + '%']]>  
+		   			</if>
+					 <if test="needs !=null and needs ==1 and pinyin != null  and pinyin !='' ">
+					   	<![CDATA[	and  pinyin like '%'+ #{pinyin }   + '%' ]]>  
+					 </if>
+					 <if test="needs !=null and needs ==1 and name != null  and name !=''">
+					   	<![CDATA[	and  name like '%'+  #{name }   + '%' ]]>  
+					</if>	  
+					<if test="needs !=null and needs ==1 and id !=null and id !='' " >
+					    	and  parentId= #{id }  
+		    		</if>
+					<if test="needs==0  and  parent==8 and id !=null and id !='' ">
+					    	and  id= #{id }  
+					</if>
+					
+					<if test="parent != null and  parent==9 and needs==2 ">
+					    	and parentId= #{id }  
+					</if>
+					<if test="parent != null and  parent==9 and needs==3 ">
+					    	and  id= #{id }  
+					</if>
+				</trim>
+		   
+	<![CDATA[ 
+		 ) p
+		left join
+		( 
+		select distinct PHARMACY_ID,MATERIAL_ID from BI_STORAGE_ANALYSIS_DAY t 
+		 ) bs  on p.pharmacyid=bs.PHARMACY_ID
+		left join
+		   chain_material w on  bs.MATERIAL_ID=w.id
+		left join
+		     chain_unit   u on w.unitId=u.id
+		left join  chain_priceOrder_item s
+		on p.parentId=s.pharmacyId and p.pharmacyCode=s.headCode and bs.MATERIAL_ID=s.matId
+	 ]]>
+	 
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+  	 		<if test="matcode != null  and matcode !='' ">
+  	 			<![CDATA[ and  w.matCode  = #{matcode }  ]]>
+  	 		</if>
+  	 
+  		  	<if test="barcode != null  and barcode !='' ">
+  	 			<![CDATA[ and  w.barcode =#{barcode } ]]>
+  	 		</if>
+  	 
+  	 		<if test="py != null  and py !='' ">
+  	 			<![CDATA[ and  w.pinyin like '%'+ #{py } + '%'  ]]>
+  	 		</if>
+  	 
+  	 		<if test="licensenum != null  and licensenum !='' ">
+  	 			<![CDATA[ and  w.licensenum like '%'+  #{licensenum }  + '%' ]]>
+  			 </if>
+  	 
+  			 <if test="matname != null  and matname !='' ">
+  	 			<![CDATA[ and  w.name like '%'+  #{matname }   + '%']]>
+  	 		 </if>
+  	 
+  	 		<if test="commonname != null  and commonname !='' ">
+  	 			<![CDATA[ and  w.commonname like '%'+  #{commonname }   + '%' ]]>
+  	 		</if>
+  	 		
+  	 		<if test="mark != null  and mark=DA ">
+  	 			<![CDATA[ and  w.isSubmit ='Y']]>
+  	 		</if>
+  			 </trim>
+		<![CDATA[
+				
+				
+				) a 
+	left join
+	(
+ 		select tmp.PHARMACY_ID,tmp.MATERIAL_ID, ISNULL(( ISNULL(tmp.shu,0) -ISNULL(t.shu,0)),0 ) as shu , ISNULL(( ISNULL(tmp.amount,0) -ISNULL(t.amount,0)),0 )as amount from (
+ 		select t.PHARMACY_ID,t.MATERIAL_ID, isnull( SUM(t.count),0) as shu ,isnull(  SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+
+  		cast (t.STAT_TIME as date) < #{start_time } and t.direction=1
+ 		group by  t.PHARMACY_ID,t.MATERIAL_ID
+ 	) tmp left join
+ 	(
+   		select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count),0) as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+
+  		cast (t.STAT_TIME as date) < #{start_time } and t.direction=0
+ 		group by  t.PHARMACY_ID,t.MATERIAL_ID
+  	) t on tmp.PHARMACY_ID=t.PHARMACY_ID  and tmp.MATERIAL_ID=t.MATERIAL_ID
+	) b
+ 	on a.pharmacyid=b.PHARMACY_ID and a.materialid=b.MATERIAL_ID
+
+
+	left join
+	(
+	select t.PHARMACY_ID,t.MATERIAL_ID,SUM(t.count) as shu , SUM(${amount}) amount from BI_STORAGE_ANALYSIS_DAY t where
+
+ 	cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } and t.direction=1
+ 	group by  t.PHARMACY_ID,t.MATERIAL_ID
+	) c
+ 	on a.pharmacyid=c.PHARMACY_ID and a.materialid=c.MATERIAL_ID
+
+
+
+	left join
+	(
+	select t.PHARMACY_ID,t.MATERIAL_ID,SUM(t.count) as shu , SUM(${amount}) amount from BI_STORAGE_ANALYSIS_DAY t where
+
+ 	cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } and t.direction=0
+ 	group by  t.PHARMACY_ID,t.MATERIAL_ID
+	) d
+ 	on a.pharmacyid=d.PHARMACY_ID and a.materialid=d.MATERIAL_ID
+
+
+	left join
+	(
+ 	select tmp.PHARMACY_ID,tmp.MATERIAL_ID, ISNULL(( ISNULL(tmp.shu,0) -ISNULL(t.shu,0)),0 ) as shu , ISNULL((ISNULL(tmp.amount,0) -ISNULL(t.amount,0)),0 )as amount from (
+ 	select t.PHARMACY_ID,t.MATERIAL_ID, isnull( SUM(t.count),0) as shu ,isnull(  SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+
+ 	cast (t.STAT_TIME as date) <= #{end_time } and t.direction=1
+ 	group by  t.PHARMACY_ID,t.MATERIAL_ID
+ 	) tmp left join
+ 	(
+  	 select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count),0) as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+ 
+  	cast (t.STAT_TIME as date) <= #{end_time } and t.direction=0
+ 	group by  t.PHARMACY_ID,t.MATERIAL_ID
+  	) t on tmp.PHARMACY_ID=t.PHARMACY_ID  and tmp.MATERIAL_ID=t.MATERIAL_ID
+	) e
+ 	on a.pharmacyid=e.PHARMACY_ID and a.materialid=e.MATERIAL_ID
+  	]]>
+  </sql>
+ 
+  <select id="findAllCpharmacyMildeCount" resultType="int" parameterType="java.util.Map" >
+  		select count(rs.id) from (
+  			<include refid="findAllCpharmacyMilde_base" />
+  			)rs
+  </select>
+  
+  <select id="findAllCpharmacyMilde" resultMap="StorageMilde" parameterType="java.util.Map" >
+  <![CDATA[select * from ( 	]]>
+  	<include refid="findAllCpharmacyMilde_base" />
+  <![CDATA[	)rs where rs.id >  #{ start} and rs.id <= #{end} ]]>
+  </select>
+  
+  <select id="findAllCpharmacyMildeSum"   resultMap="StorageMilde" parameterType="java.util.Map">
+  	<![CDATA[
+  	 select  isnull( sum(rs.qckc),0)  as qckc,  cast ( isnull( sum(rs.qckcje),0) as DECIMAL(18,2)) as qckcje ,
+  	 sum(rs.qjrk)as qjrk ,  cast ( isnull(sum(rs.qjrkje),0) as DECIMAL(18,2)) as qjrkje ,
+  	 sum(rs.qjck)as qjck , cast ( isnull( sum(rs.qjckje) ,0) as DECIMAL(18,2)) as qjckje ,
+  	 sum(rs.qmkc)as qmkc , cast ( isnull( sum(rs.qmkcje),0)  as DECIMAL(18,2)) as qmkcje  from ( 
+  	  ]]>
+  	 <include refid="findAllCpharmacyMilde_base" />
+  	<![CDATA[ 	) rs ]]>
+  </select>
+  
+  <select id="findAllCpharmacyMildeExcel" resultMap="StorageMilde" parameterType="java.util.Map">
+	<![CDATA[select * from ( 	]]>
+	<include refid="findAllCpharmacyMilde_base" />
+	<![CDATA[	)rs   ]]>
+  </select>
+
+  
+
+  <sql id="findAllCpharmacyDetail_base" >
+  <![CDATA[
+  select 
+		ROW_NUMBER () OVER (ORDER BY a.pharmacyid ,a.materialid ) AS id,
+		a.*,
+			isnull( b.shu,0) as qckc,cast (isnull( b.amount, 0)as DECIMAL(18,2)) as qckcje,
+
+			isnull( c.shu,0) as cgrk,cast (isnull( c.amount,0)as DECIMAL(18,2)) as cgrkje,
+
+			isnull( py.shu,0) as pyrk,cast( isnull( py.amount,0) as DECIMAL(18,2)) as pyrkje,
+
+			isnull( qt.shu,0) as qtrk,cast (isnull( qt.amount,0) as DECIMAL(18,2)) as qtrkje,
+
+			isnull( cl.shu,0) as clrk,cast (isnull( cl.amount,0) as DECIMAL(18,2))as clrkje,
+
+			isnull( ps.shu,0) as psrk,cast (isnull( ps.amount,0)as DECIMAL(18,2)) as psrkje,
+
+			isnull( qc.shu,0) as qcrk,cast (isnull( qc.amount,0)as DECIMAL(18,2)) as qcrkje,
+
+			isnull( xs.shu,0) as xsck,cast (isnull( xs.amount,0)as DECIMAL(18,2)) as xsckje,
+
+			isnull( pk.shu,0) as pkck,cast (isnull( pk.amount,0)as DECIMAL(18,2))as pkckje,
+			
+			isnull( qtck.shu,0) as qtck,cast (isnull( qtck.amount,0) as DECIMAL(18,2)) as qtckje,
+
+			isnull( clck.shu,0) as clck,cast (isnull( clck.amount,0) as DECIMAL(18,2)) as clckje,
+
+			isnull( psck.shu,0) as psck,cast (isnull( psck.amount,0)as DECIMAL(18,2)) as psckje,
+
+			isnull( qdck.shu,0) as qdck,cast (isnull( qdck.amount,0)as DECIMAL(18,2)) as qdckje,
+
+			isnull( xhck.shu,0) as xhck,cast (isnull( xhck.amount,0) as DECIMAL(18,2)) as xhckje,
+			
+			isnull( e.shu,0) as qmkc,cast (isnull( e.amount ,0) as DECIMAL(18,2)) as qmkcje
+	from (
+		
+		select p.pharmacyid,p.pharmacyPy,bs.MATERIAL_ID materialid,
+		p.pharmacyCode,
+		p.name,
+		isnull(w.matCode, '') AS matcode,
+		isnull(w.barcode, '') AS barcode,
+		isnull(w.name, '') AS matname,
+		isnull(w.commonName, '') AS commonname,
+		isnull(w.dosage, '') AS dosage,
+		isnull(w.spec, '') AS spec,
+		isnull(u.name, '') AS unitname,
+		isnull(w.manufName, '') AS manufname,
+		isnull(w.productArea, '') AS productarea,
+		isnull(w.licenseNum, '') AS licensenum,
+		isnull(s.retail, 0.00) AS retail,
+		isnull(w.pinyin, '') AS py
+	from
+ 		(
+ 			select id pharmacyid,pharmacyCode,name,parentId,pinyin as pharmacyPy from chain_pharmacy 
+ 			
+	]]>  
+			<trim prefix="WHERE" prefixOverrides="AND|OR">
+		 			
+		 			<if test="needs !=null and needs ==1 and pharmacyCode != null  and pharmacyCode !=''">
+		   				<![CDATA[ 	and  pharmacyCode like '%' +  #{pharmacyCode }     + '%' ]]> 
+		   			</if>
+					 <if test="needs !=null and needs ==1 and pinyin != null  and pinyin !='' ">
+					   	<![CDATA[ 	and  pinyin like '%' +  #{pinyin }    + '%'  ]]> 
+					 </if>
+					 <if test="needs !=null and needs ==1 and name != null  and name !=''">
+					   	<![CDATA[ 	and  name like '%' +  #{name }   + '%'  ]]> 
+					</if>	  
+					<if test="needs !=null and needs ==1 and pharmacyid !=null and pharmacyid !='' " >
+					    	and  parentId = #{pharmacyid }  
+		    		</if>
+		    		
+		    		
+					<if test="needs==0  and  parent==8 and pharmacyid !=null and pharmacyid !='' ">
+					    	and  id= #{pharmacyid }  
+					</if>
+					<if test="parent != null and  parent==9 and needs==2 ">
+					    	and parentId= #{pharmacyid }  
+					</if>
+					<if test="parent != null and  parent==9 and needs==3 ">
+					    	and  id= #{pharmacyid }  
+					</if>
+				</trim>	 
+		   
+	<![CDATA[ 
+		 ) p
+		left join
+		( 
+		select distinct PHARMACY_ID,MATERIAL_ID from BI_STORAGE_ANALYSIS_DAY t 
+		 ) bs  on p.pharmacyid=bs.PHARMACY_ID
+		left join
+		   chain_material w on  bs.MATERIAL_ID=w.id
+		left join
+		     chain_unit   u on w.unitId=u.id
+		left join  chain_priceOrder_item s
+		on p.parentId=s.pharmacyId and p.pharmacyCode=s.headCode and bs.MATERIAL_ID=s.matId
+	 ]]>
+	 
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+  	 		<if test="matcode != null  and matcode !='' ">
+  	 			<![CDATA[ and  w.matCode  = #{matcode } ]]>
+  	 		</if>
+  	 
+  		  	<if test="barcode != null  and barcode !='' ">
+  	 			<![CDATA[ and  w.barcode = #{barcode }  ]]>
+  	 		</if>
+  	 
+  	 		<if test="py != null  and py !='' ">
+  	 			<![CDATA[ and  w.pinyin like '%' +  #{py } + '%' ]]>
+  	 		</if>
+  	 
+  	 		<if test="licensenum != null  and licensenum !='' ">
+  	 			<![CDATA[ and  w.licensenum '%' +   #{licensenum }  + '%']]>
+  			 </if>
+  	 
+  			 <if test="matname != null  and matname !='' ">
+  	 			<![CDATA[ and  w.name '%' +  #{matname }  + '%']]>
+  	 		 </if>
+  	 
+  	 		<if test="commonname != null  and commonname !='' ">
+  	 			<![CDATA[ and  w.commonname '%' +  #{commonname }   + '%']]>
+  	 		</if>
+  	 		
+  	 		<if test="mark != null  and mark =='DA' ">
+  	 			<![CDATA[ and  w.isSubmit ='Y']]>
+  	 		</if>
+  	 		<if  test="materialid !=null and materialid !='' and needs==0  and  parent==8  ">
+				and w.id=#{materialid}
+  	 		</if>
+  			 </trim>
+		<![CDATA[
+		
+		) a 
+		left join
+		(
+		 select tmp.PHARMACY_ID,tmp.MATERIAL_ID, ISNULL(( ISNULL(tmp.shu,0) -ISNULL(t.shu,0)),0 ) as shu , ISNULL((ISNULL(tmp.amount,0) -ISNULL(t.amount,0)),0 )as amount from (
+		 select t.PHARMACY_ID,t.MATERIAL_ID, isnull( SUM(t.count),0) as shu ,isnull(  SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		  cast (t.STAT_TIME as date) < #{start_time } and t.direction=1
+		   ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and  t.PHARMACY_ID=#{pharmacyid } and t.MATERIAL_ID=#{materialid}  ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		 ) tmp left join
+		 (
+		   select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count),0) as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		   cast (t.STAT_TIME as date) < #{start_time } and t.direction=0
+		  ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and  t.PHARMACY_ID=#{pharmacyid } and t.MATERIAL_ID=#{materialid}  ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		  ) t on tmp.PHARMACY_ID=t.PHARMACY_ID  and tmp.MATERIAL_ID=t.MATERIAL_ID
+		
+		) b
+		 on a.pharmacyid=b.PHARMACY_ID and a.materialid=b.MATERIAL_ID
+		
+		
+		left join  
+		(
+		select t.PHARMACY_ID,t.MATERIAL_ID, isnull( SUM(t.count),0) as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		   cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } 
+		  and t.direction=1 and t.movetype=15
+		  ]]> 
+		   			<if test="falg !=null ">
+		  	 			<![CDATA[ and t.PHARMACY_ID=#{pharmacyid }  and t.MATERIAL_ID=#{materialid} ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		) c
+		 on a.pharmacyid=c.PHARMACY_ID and a.materialid=c.MATERIAL_ID
+		
+		left join  
+		(
+		select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count),0) as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		
+		   cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } 
+		  and t.direction=1 and t.movetype=21
+		    ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and  t.PHARMACY_ID=#{pharmacyid }  and t.MATERIAL_ID=#{materialid} ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		) py
+		 on a.pharmacyid=py.PHARMACY_ID and a.materialid=py.MATERIAL_ID
+		left join  
+		(
+		select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count) ,0)as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		  
+		   cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } 
+		  and t.direction=1 and t.movetype=200
+		    ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and  t.PHARMACY_ID=#{pharmacyid }  and t.MATERIAL_ID=#{materialid} ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		) qt
+		 on a.pharmacyid=qt.PHARMACY_ID and a.materialid=qt.MATERIAL_ID
+		left join  
+		(
+		select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count),0) as shu ,isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		   cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } 
+		  and t.direction=1 and t.movetype=27
+		    ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and t.PHARMACY_ID=#{pharmacyid }  and t.MATERIAL_ID=#{materialid} ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		) cl
+		 on a.pharmacyid=cl.PHARMACY_ID and a.materialid=cl.MATERIAL_ID
+		left join  
+		(
+		select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count),0) as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		   cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } 
+		  and t.direction=1 and t.movetype=47
+		    ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and  t.PHARMACY_ID=#{pharmacyid }  and t.MATERIAL_ID=#{materialid} ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		) ps
+		 on a.pharmacyid=ps.PHARMACY_ID and a.materialid=ps.MATERIAL_ID
+		left join  
+		(
+		select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count),0) as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		   cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } 
+		  and t.direction=1 and t.movetype=1
+		    ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and  t.PHARMACY_ID=#{pharmacyid }  and t.MATERIAL_ID=#{materialid} ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		) qc
+		 on a.pharmacyid=qc.PHARMACY_ID and a.materialid=qc.MATERIAL_ID
+		 
+		 
+		 
+		left join 
+		(
+		select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count),0) as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		   cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } 
+		  and t.direction=0 and t.movetype=71
+		    ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and   t.PHARMACY_ID=#{pharmacyid }  and t.MATERIAL_ID=#{materialid} ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		) xs
+		 on a.pharmacyid=xs.PHARMACY_ID and a.materialid=xs.MATERIAL_ID
+		
+		left join 
+		(
+		select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count),0) as shu ,isnull(  SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		   cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } 
+		  and t.direction=0 and t.movetype=21
+		    ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and t.PHARMACY_ID=#{pharmacyid }  and t.MATERIAL_ID=#{materialid} ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		) pk
+		 on a.pharmacyid=pk.PHARMACY_ID and a.materialid=pk.MATERIAL_ID
+		 
+		 left join 
+		(
+		select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count),0) as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		  cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } 
+		  and t.direction=0 and t.movetype=200
+		    ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and  t.PHARMACY_ID=#{pharmacyid }  and t.MATERIAL_ID=#{materialid} ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		) qtck
+		 on a.pharmacyid=qtck.PHARMACY_ID and a.materialid=qtck.MATERIAL_ID
+		 
+		 left join 
+		(
+		select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count),0) as shu ,isnull(  SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		   cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } 
+		  and t.direction=0 and t.movetype=27
+		    ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and  t.PHARMACY_ID=#{pharmacyid }  and t.MATERIAL_ID=#{materialid} ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		) clck
+		 on a.pharmacyid=clck.PHARMACY_ID and a.materialid=clck.MATERIAL_ID
+		 
+		 
+		  left join 
+		(
+		select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count),0) as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		   cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } 
+		  and t.direction=0 and t.movetype=43
+		    ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and  t.PHARMACY_ID=#{pharmacyid }  and t.MATERIAL_ID=#{materialid} ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		) psck
+		 on a.pharmacyid=psck.PHARMACY_ID and a.materialid=psck.MATERIAL_ID
+		 
+		   left join 
+		(
+		select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count),0) as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		  cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } 
+		  and t.direction=0 and t.movetype=26
+		   ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and  t.PHARMACY_ID=#{pharmacyid }  and t.MATERIAL_ID=#{materialid} ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		) qdck
+		 on a.pharmacyid=qdck.PHARMACY_ID and a.materialid=qdck.MATERIAL_ID
+		 
+		    left join 
+		(
+		select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count),0) as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		   cast (t.STAT_TIME as date) between #{start_time }   and #{end_time } 
+		  and t.direction=0 and t.movetype=35
+		   ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and  t.PHARMACY_ID=#{pharmacyid }  and t.MATERIAL_ID=#{materialid} ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		) xhck
+		 on a.pharmacyid=xhck.PHARMACY_ID and a.materialid=xhck.MATERIAL_ID
+		 
+		
+		left join
+		(
+		 select tmp.PHARMACY_ID,tmp.MATERIAL_ID, ISNULL((ISNULL(tmp.shu,0) -ISNULL(t.shu,0)),0 ) as shu , ISNULL((ISNULL(tmp.amount,0) -ISNULL(t.amount,0)),0 )as amount from (
+		 select t.PHARMACY_ID,t.MATERIAL_ID, isnull( SUM(t.count),0) as shu ,isnull(  SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		  
+		   cast (t.STAT_TIME as date) <= #{end_time } and t.direction=1
+		    ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and  t.PHARMACY_ID=#{pharmacyid }  and t.MATERIAL_ID=#{materialid} ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		 ) tmp left join
+		 (
+		   select t.PHARMACY_ID,t.MATERIAL_ID,isnull( SUM(t.count),0) as shu , isnull( SUM(${amount}),0) amount from BI_STORAGE_ANALYSIS_DAY t where
+		   cast (t.STAT_TIME as date) <= #{end_time } and t.direction=0
+		    ]]> 
+		   			<if test="falg !=null">
+		  	 			<![CDATA[ and  t.PHARMACY_ID=#{pharmacyid }  and t.MATERIAL_ID=#{materialid} ]]>
+		  	 		</if>
+		   
+		 <![CDATA[
+		 group by  t.PHARMACY_ID,t.MATERIAL_ID
+		  ) t on tmp.PHARMACY_ID=t.PHARMACY_ID  and tmp.MATERIAL_ID=t.MATERIAL_ID
+		 
+		) e
+		 on a.pharmacyid=e.PHARMACY_ID and a.materialid=e.MATERIAL_ID
+		  
+		  ]]>
+  
+  </sql>
+  
+  <select id="findAllCpharmacyDetailCount" resultType="int" parameterType="java.util.Map" >
+ 	<![CDATA[ select count (rs.id) as shu  from (]]>
+  	<include refid="findAllCpharmacyDetail_base" />
+  	<![CDATA[ ) rs ]]>
+  </select>
+
+  <select id="findAllCpharmacyDetailSum" resultMap="StorageDetail" parameterType="java.util.Map">
+		<![CDATA[
+  	 select  
+  	 isnull( sum(rs.qckc),0)  as qckc,  cast ( isnull( sum(rs.qckcje),0) as DECIMAL(18,2)) as qckcje ,
+  	 sum(rs.cgrk)as cgrk ,  cast ( isnull(sum(rs.cgrkje),0) as DECIMAL(18,2)) as cgrkje ,
+  	 sum(rs.pyrk)as pyrk , cast ( isnull( sum(rs.pyrkje) ,0) as DECIMAL(18,2)) as pyrkje ,
+  	 sum(rs.qtrk)as qtrk , cast ( isnull( sum(rs.qtrkje),0)  as DECIMAL(18,2)) as qtrkje ,
+  	 sum(rs.clrk)as clrk , cast ( isnull( sum(rs.clrkje),0)  as DECIMAL(18,2)) as clrkje ,
+  	 sum(rs.psrk)as psrk , cast ( isnull( sum(rs.psrkje),0)  as DECIMAL(18,2)) as psrkje ,
+  	 sum(rs.qcrk)as qcrk , cast ( isnull( sum(rs.qcrkje),0)  as DECIMAL(18,2)) as qcrkje ,
+  	 
+  	 sum(rs.xsck)as xsck , cast ( isnull( sum(rs.xsckje),0)  as DECIMAL(18,2)) as xsckje ,
+  	 sum(rs.pkck)as pkck , cast ( isnull( sum(rs.pkckje),0)  as DECIMAL(18,2)) as pkckje ,
+  	 
+  	 sum(rs.qtck)as qtck , cast ( isnull( sum(rs.qtckje),0)  as DECIMAL(18,2)) as qtckje ,
+  	 sum(rs.clck)as clck , cast ( isnull( sum(rs.clckje),0)  as DECIMAL(18,2)) as clckje ,
+  	 sum(rs.psck)as psck , cast ( isnull( sum(rs.psckje),0)  as DECIMAL(18,2)) as psckje ,
+  	 
+  	 sum(rs.qdck)as qdck , cast ( isnull( sum(rs.qdckje),0)  as DECIMAL(18,2)) as qdckje ,
+  	 sum(rs.xhck)as xhck , cast ( isnull( sum(rs.xhckje),0)  as DECIMAL(18,2)) as xhckje ,
+  	 sum(rs.qmkc)as qmkc , cast ( isnull( sum(rs.qmkcje),0)  as DECIMAL(18,2)) as qmkcje 
+  	 
+  	  from ( ]]>
+  	 <include refid="findAllCpharmacyDetail_base" />
+  	<![CDATA[	) rs ]]>
+	</select>
+	
+	<select id="findAllCpharmacyDetail" resultMap="StorageDetail" parameterType="java.util.Map">
+	<![CDATA[select * from ( 	]]>
+  	<include refid="findAllCpharmacyDetail_base" />
+  	<![CDATA[	)rs where rs.id >  #{ start} and rs.id <= #{end} ]]>
+	</select>
+	
+	<select id="findAllCpharmacyDetailExcel" resultMap="StorageDetail" parameterType="java.util.Map" >
+	<![CDATA[select * from ( 	]]>
+	<include refid="findAllCpharmacyDetail_base" />
+	<![CDATA[	)rs  ]]>
+	</select>
+</mapper>

@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fufang.bi.mapper.StorageItemMapper" >
+  <resultMap id="BaseResultMap" type="com.fufang.bi.entity.StorageItem" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="matCode" property="matcode" jdbcType="NVARCHAR" />
+    <result column="matName" property="matname" jdbcType="NVARCHAR" />
+    <result column="batchNum" property="batchnum" jdbcType="VARCHAR" />
+    <result column="manufName" property="manufname" jdbcType="NVARCHAR" />
+    <result column="unitName" property="unitname" jdbcType="NVARCHAR" />
+    <result column="spec" property="spec" jdbcType="NVARCHAR" />
+    <result column="dosage" property="dosage" jdbcType="NVARCHAR" />
+    <result column="beginStroage" property="beginstroage" jdbcType="DOUBLE" />
+    <result column="inStorage" property="instorage" jdbcType="DOUBLE" />
+    <result column="inStroageMoney" property="instroagemoney" jdbcType="DOUBLE" />
+    <result column="outSotrage" property="outsotrage" jdbcType="DOUBLE" />
+    <result column="outStorageMoney" property="outstoragemoney" jdbcType="DOUBLE" />
+    <result column="endStorage" property="endstorage" jdbcType="DOUBLE" />
+    <result column="qc" property="qc" jdbcType="DOUBLE" />
+    <result column="qcje" property="qcje" jdbcType="DOUBLE" />
+    <result column="rk" property="rk" jdbcType="DOUBLE" />
+    <result column="rkje" property="rkje" jdbcType="DOUBLE" />
+    <result column="qcrk" property="qcrk" jdbcType="DOUBLE" />
+    <result column="qcrkje" property="qcrkje" jdbcType="DOUBLE" />
+    <result column="cg" property="cg" jdbcType="DOUBLE" />
+    <result column="cgje" property="cgje" jdbcType="DOUBLE" />
+    <result column="xt" property="xt" jdbcType="DOUBLE" />
+    <result column="xtje" property="xtje" jdbcType="DOUBLE" />
+    <result column="py" property="py" jdbcType="DOUBLE" />
+    <result column="pyje" property="pyje" jdbcType="DOUBLE" />
+    <result column="clrk" property="clrk" jdbcType="DOUBLE" />
+    <result column="clrkje" property="clrkje" jdbcType="DOUBLE" />
+    <result column="qtrk" property="qtrk" jdbcType="DOUBLE" />
+    <result column="qtrkje" property="qtrkje" jdbcType="DOUBLE" />
+    <result column="xs" property="xs" jdbcType="DOUBLE" />
+    <result column="xsje" property="xsje" jdbcType="DOUBLE" />
+    <result column="ct" property="ct" jdbcType="DOUBLE" />
+    <result column="ctje" property="ctje" jdbcType="DOUBLE" />
+    <result column="pk" property="pk" jdbcType="DOUBLE" />
+    <result column="pkje" property="pkje" jdbcType="DOUBLE" />
+    <result column="xh" property="xh" jdbcType="DOUBLE" />
+    <result column="xhje" property="xhje" jdbcType="DOUBLE" />
+    <result column="clck" property="clck" jdbcType="DOUBLE" />
+    <result column="clckje" property="clckje" jdbcType="DOUBLE" />
+    <result column="qd" property="qd" jdbcType="DOUBLE" />
+    <result column="qdje" property="qdje" jdbcType="DOUBLE" />
+    <result column="qtck" property="qtck" jdbcType="DOUBLE" />
+    <result column="qtckje" property="qtckje" jdbcType="DOUBLE" />
+    <result column="ck" property="ck" jdbcType="DOUBLE" />
+    <result column="ckje" property="ckje" jdbcType="DOUBLE" />
+    <result column="qm" property="qm" jdbcType="DOUBLE" />
+    <result column="qmje" property="qmje" jdbcType="DOUBLE" />
+    <result column="stat_time" property="statTime" jdbcType="DATE" />
+    <result column="issubmit" property="issubmit" jdbcType="INTEGER" />
+  </resultMap>
+  
+   <resultMap id="StorageTotalMap" type="com.fufang.bi.entity.StorageTotal" >
+    <result column="pharmacyCode" property="pharmacycode" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="pharmacyid" property="pharmacyid" jdbcType="INTEGER" />
+    <result column="qckc" property="qckc" jdbcType="INTEGER" />
+    <result column="qckcje" property="qckcje" jdbcType="DOUBLE" />
+    <result column="qjrk" property="qjrk" jdbcType="INTEGER" />
+    <result column="qjrkje" property="qjrkje" jdbcType="DOUBLE" />
+    <result column="qjck" property="qjck" jdbcType="INTEGER" />
+    <result column="qjckje" property="qjckje" jdbcType="DOUBLE" />
+    <result column="qmkc" property="qmkc" jdbcType="INTEGER" />
+    <result column="qmkcje" property="qmkcje" jdbcType="DOUBLE" />
+  </resultMap>
+ 
+ 
+  <sql id="Base_Column_List" >
+    id, matCode, matName, batchNum, manufName, unitName, spec, dosage, beginStroage, 
+    inStorage, inStroageMoney, outSotrage, outStorageMoney, endStorage, qc, qcje, rk, 
+    rkje, qcrk, qcrkje, cg, cgje, xt, xtje, py, pyje, clrk, clrkje, qtrk, qtrkje, xs, 
+    xsje, ct, ctje, pk, pkje, xh, xhje, clck, clckje, qd, qdje, qtck, qtckje, ck, ckje, 
+    qm, qmje, stat_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dbo.storage_item
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dbo.storage_item
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fufang.bi.entity.StorageItem" >
+    insert into dbo.storage_item (id, matCode, matName, 
+      batchNum, manufName, unitName, 
+      spec, dosage, beginStroage, 
+      inStorage, inStroageMoney, outSotrage, 
+      outStorageMoney, endStorage, qc, 
+      qcje, rk, rkje, qcrk, 
+      qcrkje, cg, cgje, xt, 
+      xtje, py, pyje, clrk, 
+      clrkje, qtrk, qtrkje, 
+      xs, xsje, ct, ctje, 
+      pk, pkje, xh, xhje, 
+      clck, clckje, qd, qdje, 
+      qtck, qtckje, ck, ckje, 
+      qm, qmje, stat_time)
+    values (#{id,jdbcType=INTEGER}, #{matcode,jdbcType=NVARCHAR}, #{matname,jdbcType=NVARCHAR}, 
+      #{batchnum,jdbcType=VARCHAR}, #{manufname,jdbcType=NVARCHAR}, #{unitname,jdbcType=NVARCHAR}, 
+      #{spec,jdbcType=NVARCHAR}, #{dosage,jdbcType=NVARCHAR}, #{beginstroage,jdbcType=DOUBLE}, 
+      #{instorage,jdbcType=DOUBLE}, #{instroagemoney,jdbcType=DOUBLE}, #{outsotrage,jdbcType=DOUBLE}, 
+      #{outstoragemoney,jdbcType=DOUBLE}, #{endstorage,jdbcType=DOUBLE}, #{qc,jdbcType=DOUBLE}, 
+      #{qcje,jdbcType=DOUBLE}, #{rk,jdbcType=DOUBLE}, #{rkje,jdbcType=DOUBLE}, #{qcrk,jdbcType=DOUBLE}, 
+      #{qcrkje,jdbcType=DOUBLE}, #{cg,jdbcType=DOUBLE}, #{cgje,jdbcType=DOUBLE}, #{xt,jdbcType=DOUBLE}, 
+      #{xtje,jdbcType=DOUBLE}, #{py,jdbcType=DOUBLE}, #{pyje,jdbcType=DOUBLE}, #{clrk,jdbcType=DOUBLE}, 
+      #{clrkje,jdbcType=DOUBLE}, #{qtrk,jdbcType=DOUBLE}, #{qtrkje,jdbcType=DOUBLE}, 
+      #{xs,jdbcType=DOUBLE}, #{xsje,jdbcType=DOUBLE}, #{ct,jdbcType=DOUBLE}, #{ctje,jdbcType=DOUBLE}, 
+      #{pk,jdbcType=DOUBLE}, #{pkje,jdbcType=DOUBLE}, #{xh,jdbcType=DOUBLE}, #{xhje,jdbcType=DOUBLE}, 
+      #{clck,jdbcType=DOUBLE}, #{clckje,jdbcType=DOUBLE}, #{qd,jdbcType=DOUBLE}, #{qdje,jdbcType=DOUBLE}, 
+      #{qtck,jdbcType=DOUBLE}, #{qtckje,jdbcType=DOUBLE}, #{ck,jdbcType=DOUBLE}, #{ckje,jdbcType=DOUBLE}, 
+      #{qm,jdbcType=DOUBLE}, #{qmje,jdbcType=DOUBLE}, #{statTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fufang.bi.entity.StorageItem" ><!-- SET IDENTITY_INSERT dbo.storage_item ON -->
+    
+    insert into dbo.storage_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="matcode != null" >
+        matCode,
+      </if>
+      <if test="matname != null" >
+        matName,
+      </if>
+      <if test="batchnum != null" >
+        batchNum,
+      </if>
+      <if test="manufname != null" >
+        manufName,
+      </if>
+      <if test="unitname != null" >
+        unitName,
+      </if>
+      <if test="spec != null" >
+        spec,
+      </if>
+      <if test="dosage != null" >
+        dosage,
+      </if>
+      <if test="beginstroage != null" >
+        beginStroage,
+      </if>
+      <if test="instorage != null" >
+        inStorage,
+      </if>
+      <if test="instroagemoney != null" >
+        inStroageMoney,
+      </if>
+      <if test="outsotrage != null" >
+        outSotrage,
+      </if>
+      <if test="outstoragemoney != null" >
+        outStorageMoney,
+      </if>
+      <if test="endstorage != null" >
+        endStorage,
+      </if>
+      <if test="qc != null" >
+        qc,
+      </if>
+      <if test="qcje != null" >
+        qcje,
+      </if>
+      <if test="rk != null" >
+        rk,
+      </if>
+      <if test="rkje != null" >
+        rkje,
+      </if>
+      <if test="qcrk != null" >
+        qcrk,
+      </if>
+      <if test="qcrkje != null" >
+        qcrkje,
+      </if>
+      <if test="cg != null" >
+        cg,
+      </if>
+      <if test="cgje != null" >
+        cgje,
+      </if>
+      <if test="xt != null" >
+        xt,
+      </if>
+      <if test="xtje != null" >
+        xtje,
+      </if>
+      <if test="py != null" >
+        py,
+      </if>
+      <if test="pyje != null" >
+        pyje,
+      </if>
+      <if test="clrk != null" >
+        clrk,
+      </if>
+      <if test="clrkje != null" >
+        clrkje,
+      </if>
+      <if test="qtrk != null" >
+        qtrk,
+      </if>
+      <if test="qtrkje != null" >
+        qtrkje,
+      </if>
+      <if test="xs != null" >
+        xs,
+      </if>
+      <if test="xsje != null" >
+        xsje,
+      </if>
+      <if test="ct != null" >
+        ct,
+      </if>
+      <if test="ctje != null" >
+        ctje,
+      </if>
+      <if test="pk != null" >
+        pk,
+      </if>
+      <if test="pkje != null" >
+        pkje,
+      </if>
+      <if test="xh != null" >
+        xh,
+      </if>
+      <if test="xhje != null" >
+        xhje,
+      </if>
+      <if test="clck != null" >
+        clck,
+      </if>
+      <if test="clckje != null" >
+        clckje,
+      </if>
+      <if test="qd != null" >
+        qd,
+      </if>
+      <if test="qdje != null" >
+        qdje,
+      </if>
+      <if test="qtck != null" >
+        qtck,
+      </if>
+      <if test="qtckje != null" >
+        qtckje,
+      </if>
+      <if test="ck != null" >
+        ck,
+      </if>
+      <if test="ckje != null" >
+        ckje,
+      </if>
+      <if test="qm != null" >
+        qm,
+      </if>
+      <if test="qmje != null" >
+        qmje,
+      </if>
+      <if test="statTime != null" >
+        stat_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="matcode != null" >
+        #{matcode,jdbcType=NVARCHAR},
+      </if>
+      <if test="matname != null" >
+        #{matname,jdbcType=NVARCHAR},
+      </if>
+      <if test="batchnum != null" >
+        #{batchnum,jdbcType=VARCHAR},
+      </if>
+      <if test="manufname != null" >
+        #{manufname,jdbcType=NVARCHAR},
+      </if>
+      <if test="unitname != null" >
+        #{unitname,jdbcType=NVARCHAR},
+      </if>
+      <if test="spec != null" >
+        #{spec,jdbcType=NVARCHAR},
+      </if>
+      <if test="dosage != null" >
+        #{dosage,jdbcType=NVARCHAR},
+      </if>
+      <if test="beginstroage != null" >
+        #{beginstroage,jdbcType=DOUBLE},
+      </if>
+      <if test="instorage != null" >
+        #{instorage,jdbcType=DOUBLE},
+      </if>
+      <if test="instroagemoney != null" >
+        #{instroagemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="outsotrage != null" >
+        #{outsotrage,jdbcType=DOUBLE},
+      </if>
+      <if test="outstoragemoney != null" >
+        #{outstoragemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="endstorage != null" >
+        #{endstorage,jdbcType=DOUBLE},
+      </if>
+      <if test="qc != null" >
+        #{qc,jdbcType=DOUBLE},
+      </if>
+      <if test="qcje != null" >
+        #{qcje,jdbcType=DOUBLE},
+      </if>
+      <if test="rk != null" >
+        #{rk,jdbcType=DOUBLE},
+      </if>
+      <if test="rkje != null" >
+        #{rkje,jdbcType=DOUBLE},
+      </if>
+      <if test="qcrk != null" >
+        #{qcrk,jdbcType=DOUBLE},
+      </if>
+      <if test="qcrkje != null" >
+        #{qcrkje,jdbcType=DOUBLE},
+      </if>
+      <if test="cg != null" >
+        #{cg,jdbcType=DOUBLE},
+      </if>
+      <if test="cgje != null" >
+        #{cgje,jdbcType=DOUBLE},
+      </if>
+      <if test="xt != null" >
+        #{xt,jdbcType=DOUBLE},
+      </if>
+      <if test="xtje != null" >
+        #{xtje,jdbcType=DOUBLE},
+      </if>
+      <if test="py != null" >
+        #{py,jdbcType=DOUBLE},
+      </if>
+      <if test="pyje != null" >
+        #{pyje,jdbcType=DOUBLE},
+      </if>
+      <if test="clrk != null" >
+        #{clrk,jdbcType=DOUBLE},
+      </if>
+      <if test="clrkje != null" >
+        #{clrkje,jdbcType=DOUBLE},
+      </if>
+      <if test="qtrk != null" >
+        #{qtrk,jdbcType=DOUBLE},
+      </if>
+      <if test="qtrkje != null" >
+        #{qtrkje,jdbcType=DOUBLE},
+      </if>
+      <if test="xs != null" >
+        #{xs,jdbcType=DOUBLE},
+      </if>
+      <if test="xsje != null" >
+        #{xsje,jdbcType=DOUBLE},
+      </if>
+      <if test="ct != null" >
+        #{ct,jdbcType=DOUBLE},
+      </if>
+      <if test="ctje != null" >
+        #{ctje,jdbcType=DOUBLE},
+      </if>
+      <if test="pk != null" >
+        #{pk,jdbcType=DOUBLE},
+      </if>
+      <if test="pkje != null" >
+        #{pkje,jdbcType=DOUBLE},
+      </if>
+      <if test="xh != null" >
+        #{xh,jdbcType=DOUBLE},
+      </if>
+      <if test="xhje != null" >
+        #{xhje,jdbcType=DOUBLE},
+      </if>
+      <if test="clck != null" >
+        #{clck,jdbcType=DOUBLE},
+      </if>
+      <if test="clckje != null" >
+        #{clckje,jdbcType=DOUBLE},
+      </if>
+      <if test="qd != null" >
+        #{qd,jdbcType=DOUBLE},
+      </if>
+      <if test="qdje != null" >
+        #{qdje,jdbcType=DOUBLE},
+      </if>
+      <if test="qtck != null" >
+        #{qtck,jdbcType=DOUBLE},
+      </if>
+      <if test="qtckje != null" >
+        #{qtckje,jdbcType=DOUBLE},
+      </if>
+      <if test="ck != null" >
+        #{ck,jdbcType=DOUBLE},
+      </if>
+      <if test="ckje != null" >
+        #{ckje,jdbcType=DOUBLE},
+      </if>
+      <if test="qm != null" >
+        #{qm,jdbcType=DOUBLE},
+      </if>
+      <if test="qmje != null" >
+        #{qmje,jdbcType=DOUBLE},
+      </if>
+      <if test="statTime != null" >
+        #{statTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fufang.bi.entity.StorageItem" >
+    update dbo.storage_item
+    <set >
+      <if test="matcode != null" >
+        matCode = #{matcode,jdbcType=NVARCHAR},
+      </if>
+      <if test="matname != null" >
+        matName = #{matname,jdbcType=NVARCHAR},
+      </if>
+      <if test="batchnum != null" >
+        batchNum = #{batchnum,jdbcType=VARCHAR},
+      </if>
+      <if test="manufname != null" >
+        manufName = #{manufname,jdbcType=NVARCHAR},
+      </if>
+      <if test="unitname != null" >
+        unitName = #{unitname,jdbcType=NVARCHAR},
+      </if>
+      <if test="spec != null" >
+        spec = #{spec,jdbcType=NVARCHAR},
+      </if>
+      <if test="dosage != null" >
+        dosage = #{dosage,jdbcType=NVARCHAR},
+      </if>
+      <if test="beginstroage != null" >
+        beginStroage = #{beginstroage,jdbcType=DOUBLE},
+      </if>
+      <if test="instorage != null" >
+        inStorage = #{instorage,jdbcType=DOUBLE},
+      </if>
+      <if test="instroagemoney != null" >
+        inStroageMoney = #{instroagemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="outsotrage != null" >
+        outSotrage = #{outsotrage,jdbcType=DOUBLE},
+      </if>
+      <if test="outstoragemoney != null" >
+        outStorageMoney = #{outstoragemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="endstorage != null" >
+        endStorage = #{endstorage,jdbcType=DOUBLE},
+      </if>
+      <if test="qc != null" >
+        qc = #{qc,jdbcType=DOUBLE},
+      </if>
+      <if test="qcje != null" >
+        qcje = #{qcje,jdbcType=DOUBLE},
+      </if>
+      <if test="rk != null" >
+        rk = #{rk,jdbcType=DOUBLE},
+      </if>
+      <if test="rkje != null" >
+        rkje = #{rkje,jdbcType=DOUBLE},
+      </if>
+      <if test="qcrk != null" >
+        qcrk = #{qcrk,jdbcType=DOUBLE},
+      </if>
+      <if test="qcrkje != null" >
+        qcrkje = #{qcrkje,jdbcType=DOUBLE},
+      </if>
+      <if test="cg != null" >
+        cg = #{cg,jdbcType=DOUBLE},
+      </if>
+      <if test="cgje != null" >
+        cgje = #{cgje,jdbcType=DOUBLE},
+      </if>
+      <if test="xt != null" >
+        xt = #{xt,jdbcType=DOUBLE},
+      </if>
+      <if test="xtje != null" >
+        xtje = #{xtje,jdbcType=DOUBLE},
+      </if>
+      <if test="py != null" >
+        py = #{py,jdbcType=DOUBLE},
+      </if>
+      <if test="pyje != null" >
+        pyje = #{pyje,jdbcType=DOUBLE},
+      </if>
+      <if test="clrk != null" >
+        clrk = #{clrk,jdbcType=DOUBLE},
+      </if>
+      <if test="clrkje != null" >
+        clrkje = #{clrkje,jdbcType=DOUBLE},
+      </if>
+      <if test="qtrk != null" >
+        qtrk = #{qtrk,jdbcType=DOUBLE},
+      </if>
+      <if test="qtrkje != null" >
+        qtrkje = #{qtrkje,jdbcType=DOUBLE},
+      </if>
+      <if test="xs != null" >
+        xs = #{xs,jdbcType=DOUBLE},
+      </if>
+      <if test="xsje != null" >
+        xsje = #{xsje,jdbcType=DOUBLE},
+      </if>
+      <if test="ct != null" >
+        ct = #{ct,jdbcType=DOUBLE},
+      </if>
+      <if test="ctje != null" >
+        ctje = #{ctje,jdbcType=DOUBLE},
+      </if>
+      <if test="pk != null" >
+        pk = #{pk,jdbcType=DOUBLE},
+      </if>
+      <if test="pkje != null" >
+        pkje = #{pkje,jdbcType=DOUBLE},
+      </if>
+      <if test="xh != null" >
+        xh = #{xh,jdbcType=DOUBLE},
+      </if>
+      <if test="xhje != null" >
+        xhje = #{xhje,jdbcType=DOUBLE},
+      </if>
+      <if test="clck != null" >
+        clck = #{clck,jdbcType=DOUBLE},
+      </if>
+      <if test="clckje != null" >
+        clckje = #{clckje,jdbcType=DOUBLE},
+      </if>
+      <if test="qd != null" >
+        qd = #{qd,jdbcType=DOUBLE},
+      </if>
+      <if test="qdje != null" >
+        qdje = #{qdje,jdbcType=DOUBLE},
+      </if>
+      <if test="qtck != null" >
+        qtck = #{qtck,jdbcType=DOUBLE},
+      </if>
+      <if test="qtckje != null" >
+        qtckje = #{qtckje,jdbcType=DOUBLE},
+      </if>
+      <if test="ck != null" >
+        ck = #{ck,jdbcType=DOUBLE},
+      </if>
+      <if test="ckje != null" >
+        ckje = #{ckje,jdbcType=DOUBLE},
+      </if>
+      <if test="qm != null" >
+        qm = #{qm,jdbcType=DOUBLE},
+      </if>
+      <if test="qmje != null" >
+        qmje = #{qmje,jdbcType=DOUBLE},
+      </if>
+      <if test="statTime != null" >
+        stat_time = #{statTime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.fufang.bi.entity.StorageItem" >
+    update dbo.storage_item
+    set matCode = #{matcode,jdbcType=NVARCHAR},
+      matName = #{matname,jdbcType=NVARCHAR},
+      batchNum = #{batchnum,jdbcType=VARCHAR},
+      manufName = #{manufname,jdbcType=NVARCHAR},
+      unitName = #{unitname,jdbcType=NVARCHAR},
+      spec = #{spec,jdbcType=NVARCHAR},
+      dosage = #{dosage,jdbcType=NVARCHAR},
+      beginStroage = #{beginstroage,jdbcType=DOUBLE},
+      inStorage = #{instorage,jdbcType=DOUBLE},
+      inStroageMoney = #{instroagemoney,jdbcType=DOUBLE},
+      outSotrage = #{outsotrage,jdbcType=DOUBLE},
+      outStorageMoney = #{outstoragemoney,jdbcType=DOUBLE},
+      endStorage = #{endstorage,jdbcType=DOUBLE},
+      qc = #{qc,jdbcType=DOUBLE},
+      qcje = #{qcje,jdbcType=DOUBLE},
+      rk = #{rk,jdbcType=DOUBLE},
+      rkje = #{rkje,jdbcType=DOUBLE},
+      qcrk = #{qcrk,jdbcType=DOUBLE},
+      qcrkje = #{qcrkje,jdbcType=DOUBLE},
+      cg = #{cg,jdbcType=DOUBLE},
+      cgje = #{cgje,jdbcType=DOUBLE},
+      xt = #{xt,jdbcType=DOUBLE},
+      xtje = #{xtje,jdbcType=DOUBLE},
+      py = #{py,jdbcType=DOUBLE},
+      pyje = #{pyje,jdbcType=DOUBLE},
+      clrk = #{clrk,jdbcType=DOUBLE},
+      clrkje = #{clrkje,jdbcType=DOUBLE},
+      qtrk = #{qtrk,jdbcType=DOUBLE},
+      qtrkje = #{qtrkje,jdbcType=DOUBLE},
+      xs = #{xs,jdbcType=DOUBLE},
+      xsje = #{xsje,jdbcType=DOUBLE},
+      ct = #{ct,jdbcType=DOUBLE},
+      ctje = #{ctje,jdbcType=DOUBLE},
+      pk = #{pk,jdbcType=DOUBLE},
+      pkje = #{pkje,jdbcType=DOUBLE},
+      xh = #{xh,jdbcType=DOUBLE},
+      xhje = #{xhje,jdbcType=DOUBLE},
+      clck = #{clck,jdbcType=DOUBLE},
+      clckje = #{clckje,jdbcType=DOUBLE},
+      qd = #{qd,jdbcType=DOUBLE},
+      qdje = #{qdje,jdbcType=DOUBLE},
+      qtck = #{qtck,jdbcType=DOUBLE},
+      qtckje = #{qtckje,jdbcType=DOUBLE},
+      ck = #{ck,jdbcType=DOUBLE},
+      ckje = #{ckje,jdbcType=DOUBLE},
+      qm = #{qm,jdbcType=DOUBLE},
+      qmje = #{qmje,jdbcType=DOUBLE},
+      stat_time = #{statTime,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <sql id="isnotnull" >
+        	<if test="matcode != null" >
+        matCode = #{matcode,jdbcType=NCHAR}
+      </if>
+      
+       <if test="matname != null" >
+       and matName = #{matname,jdbcType=NCHAR}
+      </if>
+      <if test="batchnum != null" >
+       and batchNum = #{batchnum,jdbcType=NCHAR}
+      </if>
+      <if test="manufname != null" >
+       and manufName = #{manufname,jdbcType=NCHAR}
+      </if>
+      <if test="unitname != null" >
+      and unitName = #{unitname,jdbcType=NCHAR}
+      </if>
+      <if test="spec != null" >
+       and spec = #{spec,jdbcType=NCHAR}
+      </if>
+      <if test="dosage != null" >
+       and dosage = #{dosage,jdbcType=NCHAR}
+      </if>
+      <if test="beginstroage != null" >
+       and beginStroage = #{beginstroage,jdbcType=DOUBLE}
+      </if>
+      
+      <if test="instorage != null" >
+      and  inStorage = #{instorage,jdbcType=DOUBLE}
+      </if>
+      <if test="instroagemoney != null" >
+       and inStroageMoney = #{instroagemoney,jdbcType=DOUBLE}
+      </if>
+      <if test="outsotrage != null" >
+        and outSotrage = #{outsotrage,jdbcType=DOUBLE}
+      </if>
+      <if test="outstoragemoney != null" >
+       and outStorageMoney = #{outstoragemoney,jdbcType=DOUBLE}
+      </if>
+      <if test="endstorage != null" >
+       and endStorage = #{endstorage,jdbcType=DOUBLE}
+      </if>
+      <if test="qc != null" >
+        and qc = #{qc,jdbcType=DOUBLE}
+      </if>
+      <if test="qcje != null" >
+       and qcje = #{qcje,jdbcType=DOUBLE}
+      </if>
+      <if test="rk != null" >
+       and rk = #{rk,jdbcType=DOUBLE}
+      </if>
+      <if test="rkje != null" >
+       and rkje = #{rkje,jdbcType=DOUBLE}
+      </if>
+      <if test="qcrk != null" >
+      and  qcrk = #{qcrk,jdbcType=DOUBLE}
+      </if>
+      <if test="qcrkje != null" >
+       and qcrkje = #{qcrkje,jdbcType=DOUBLE}
+      </if>
+      <if test="cg != null" >
+       and cg = #{cg,jdbcType=DOUBLE}
+      </if>
+      <if test="cgje != null" >
+       and cgje = #{cgje,jdbcType=DOUBLE}
+      </if>
+      <if test="xt != null" >
+       and xt = #{xt,jdbcType=DOUBLE}
+      </if>
+      <if test="xtje != null" >
+       and xtje = #{xtje,jdbcType=DOUBLE}
+      </if>
+      <if test="py != null" >
+       and py = #{py,jdbcType=DOUBLE}
+      </if>
+      <if test="pyje != null" >
+       and pyje = #{pyje,jdbcType=DOUBLE}
+      </if>
+      <if test="clrk != null" >
+      and  clrk = #{clrk,jdbcType=DOUBLE}
+      </if>
+      <if test="clrkje != null" >
+       and clrkje = #{clrkje,jdbcType=DOUBLE}
+      </if>
+      <if test="qtrk != null" >
+       and qtrk = #{qtrk,jdbcType=DOUBLE}
+      </if>
+      <if test="qtrkje != null" >
+       and qtrkje = #{qtrkje,jdbcType=DOUBLE}
+      </if>
+      <if test="xs != null" >
+       and xs = #{xs,jdbcType=DOUBLE}
+      </if>
+      <if test="xsje != null" >
+      and  xsje = #{xsje,jdbcType=DOUBLE}
+      </if>
+      <if test="ct != null" >
+      and  ct = #{ct,jdbcType=DOUBLE}
+      </if>
+      <if test="ctje != null" >
+      and  ctje = #{ctje,jdbcType=DOUBLE}
+      </if>
+      <if test="pk != null" >
+       and pk = #{pk,jdbcType=DOUBLE}
+      </if>
+      <if test="pkje != null" >
+      and  pkje = #{pkje,jdbcType=DOUBLE}
+      </if>
+      <if test="xh != null" >
+       and xh = #{xh,jdbcType=DOUBLE}
+      </if>
+      <if test="xhje != null" >
+       and xhje = #{xhje,jdbcType=DOUBLE}
+      </if>
+      <if test="clck != null" >
+       and clck = #{clck,jdbcType=DOUBLE}
+      </if>
+      <if test="clckje != null" >
+       and clckje = #{clckje,jdbcType=DOUBLE}
+      </if>
+      <if test="qd != null" >
+       and qd = #{qd,jdbcType=DOUBLE}
+      </if>
+      <if test="qdje != null" >
+       and qdje = #{qdje,jdbcType=DOUBLE}
+      </if>
+      <if test="qtck != null" >
+       and qtck = #{qtck,jdbcType=DOUBLE}
+      </if>
+      <if test="qtckje != null" >
+       and qtckje = #{qtckje,jdbcType=DOUBLE}
+      </if>
+      <if test="ck != null" >
+       and ck = #{ck,jdbcType=DOUBLE}
+      </if>
+      
+      <if test="ckje != null" >
+      and  ckje = #{ckje,jdbcType=DOUBLE}
+      </if>
+      <if test="qm != null" >
+       and qm = #{qm,jdbcType=DOUBLE}
+      </if>
+      
+      <if test="qmje != null" >
+       and qmje = #{qmje,jdbcType=DOUBLE}
+      </if>
+      <if test="statTime != null" >
+       and stat_time = #{statTime,jdbcType=DATE}
+      </if>
+  
+  </sql>
+  
+  <sql id="sql_whereObject" >
+  	 <where>
+  	 <include refid="isnotnull" />
+  	 </where>
+  </sql>
+  
+  
+  <select id="Demo" parameterType="java.lang.Integer"  resultMap="BaseResultMap" >
+  	select 
+  		<include refid="Base_Column_List" />
+  	 from dbo.storage_item
+  	 where id = #{id,jdbcType=INTEGER}
+  
+  </select>
+  
+  
+  <select id="findList"  resultMap="BaseResultMap" >
+  		select 
+		<include  refid="Base_Column_List" />
+ 		from dbo.storage_item
+  		<include refid="sql_whereObject"/>
+		order by id
+  </select>
+  
+  <select id="findListCpharmacy111" resultMap="StorageTotalMap" parameterType="java.util.Map" >
+  	<![CDATA[ 
+  	select a.pharmacyid,a.pharmacyCode,a.name,isnull(b.shu,0)as qckc ,isnull(b.je,0) as qckcje 
+    ,isnull(b.shu1,0)as qjrk ,isnull(b.je1,0) as qjrkje,
+    isnull(b.shu2,0)as qjck ,isnull(b.je2,0) as qjckje,
+    isnull(b.shu3,0)as qmkc ,isnull(b.je3,0) as qmkcje
+  	  from (
+  		select t.id as pharmacyid ,t.pharmacyCode ,t.name from chain_pharmacy t 
+  		where  t.id =#{id }  or t.parentid=#{id } 
+  		 ) a  left join(
+  		select pharmacyid , (SUM(qcrk) +SUM(rk)) as 'shu' ,(SUM(qcrkje) +SUM(rkje)) as 'je'
+		,(SUM(qcrk) +SUM(rk)) as 'shu1' ,(SUM(qcrkje) +SUM(rkje)) as 'je1',
+    	(SUM(qcrk) +SUM(rk)) as 'shu2' ,(SUM(qcrkje) +SUM(rkje)) as 'je2',
+    	(SUM(qcrk) +SUM(rk)) as 'shu3' ,(SUM(qcrkje) +SUM(rkje)) as 'je3'
+		 from  storage_item t 
+    	]]>
+    	<trim prefix="where" prefixOverrides="and">
+	    	<![CDATA[ cast (t.stat_time as DATE) between  #{start_time } and #{end_time }]]>
+	    	<if test="mark =='DA'">
+	    		and issubmit=1
+	    	</if>
+	    	<![CDATA[ group by pharmacyid 
+	    		)b on a.pharmacyid=b.pharmacyid
+	    	]]>
+    	</trim>
+	    <![CDATA[ order by ${sidx} ${sord}]]>
+  </select>
+  
+  	<select id="findListCpharmacy" resultMap="StorageTotalMap" parameterType="java.util.Map"  >
+  	 <![CDATA[ 
+  	 	select a.pharmacyid, qcrk   ,qcrkje,cg as qmkc ,cgje  as qmkcje from  storage_item a 
+  	 	order by ${sidx} ${sord}
+  	 ]]>
+  	
+  	</select>
+  
+  
+<!--   <select id="findListCpharmacyCount" resultType="int" parameterType="java.util.Map" >
+  	
+  	<![CDATA[ 
+  	select  count(a.pharmacyid) as shu
+  	  from (
+  		select t.id as pharmacyid ,t.pharmacyCode ,t.name from chain_pharmacy t 
+  		where  t.id =#{id }  or t.parentid=#{id } 
+  		 ) a  left join(
+  		select pharmacyid , (SUM(qcrk) +SUM(rk)) as 'shu' ,(SUM(qcrkje) +SUM(rkje)) as 'je'
+		,(SUM(qcrk) +SUM(rk)) as 'shu1' ,(SUM(qcrkje) +SUM(rkje)) as 'je1',
+    	(SUM(qcrk) +SUM(rk)) as 'shu2' ,(SUM(qcrkje) +SUM(rkje)) as 'je2',
+    	(SUM(qcrk) +SUM(rk)) as 'shu3' ,(SUM(qcrkje) +SUM(rkje)) as 'je3'
+		 from  storage_item t 
+    	where cast (t.stat_time as DATE) between  #{start_time } and #{end_time }
+    	group by pharmacyid 
+    	)b on a.pharmacyid=b.pharmacyid
+  	 ]]>
+  
+  </select> -->
+  
+</mapper>

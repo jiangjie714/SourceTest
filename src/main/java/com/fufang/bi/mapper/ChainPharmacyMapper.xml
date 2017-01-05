@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fufang.bi.mapper.ChainPharmacyMapper" >
+  <resultMap id="BaseResultMap" type="com.fufang.bi.entity.ChainPharmacy" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="NVARCHAR" />
+    <result column="district" property="district" jdbcType="NVARCHAR" />
+    <result column="businessLicenseId" property="businesslicenseid" jdbcType="NVARCHAR" />
+    <result column="businessPermitsId" property="businesspermitsid" jdbcType="NVARCHAR" />
+    <result column="registAddress" property="registaddress" jdbcType="NVARCHAR" />
+    <result column="representative" property="representative" jdbcType="NVARCHAR" />
+    <result column="businessPrincipal" property="businessprincipal" jdbcType="NVARCHAR" />
+    <result column="qualityPrincipal" property="qualityprincipal" jdbcType="NVARCHAR" />
+    <result column="qualityAdministrator" property="qualityadministrator" jdbcType="NVARCHAR" />
+    <result column="businessPractice" property="businesspractice" jdbcType="NVARCHAR" />
+    <result column="chainStoreName" property="chainstorename" jdbcType="NVARCHAR" />
+    <result column="range" property="range" jdbcType="NVARCHAR" />
+    <result column="validity" property="validity" jdbcType="NVARCHAR" />
+    <result column="storageAddress" property="storageaddress" jdbcType="NVARCHAR" />
+    <result column="approve" property="approve" jdbcType="NVARCHAR" />
+    <result column="certificateId" property="certificateid" jdbcType="NVARCHAR" />
+    <result column="healthInsurancePharmacy" property="healthinsurancepharmacy" jdbcType="NVARCHAR" />
+    <result column="mobilePhone" property="mobilephone" jdbcType="NVARCHAR" />
+    <result column="phone" property="phone" jdbcType="NVARCHAR" />
+    <result column="postalcode" property="postalcode" jdbcType="NVARCHAR" />
+    <result column="openBank" property="openbank" jdbcType="NVARCHAR" />
+    <result column="accounts" property="accounts" jdbcType="NVARCHAR" />
+    <result column="dutyId" property="dutyid" jdbcType="NVARCHAR" />
+    <result column="introduce" property="introduce" jdbcType="NVARCHAR" />
+    <result column="status" property="status" jdbcType="NVARCHAR" />
+    <result column="provinceId" property="provinceid" jdbcType="INTEGER" />
+    <result column="cityId" property="cityid" jdbcType="INTEGER" />
+    <result column="regionId" property="regionid" jdbcType="INTEGER" />
+    <result column="checker" property="checker" jdbcType="INTEGER" />
+    <result column="checkDate" property="checkdate" jdbcType="TIMESTAMP" />
+    <result column="checkOpinion" property="checkopinion" jdbcType="NVARCHAR" />
+    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="NVARCHAR" />
+    <result column="srvId" property="srvid" jdbcType="INTEGER" />
+    <result column="chainType" property="chaintype" jdbcType="INTEGER" />
+    <result column="salesName" property="salesname" jdbcType="NVARCHAR" />
+    <result column="implementor" property="implementor" jdbcType="NVARCHAR" />
+    <result column="unity" property="unity" jdbcType="INTEGER" />
+    <result column="inspectionDate" property="inspectiondate" jdbcType="TIMESTAMP" />
+    <result column="ranges" property="ranges" jdbcType="NVARCHAR" />
+    <result column="used" property="used" jdbcType="INTEGER" />
+    <result column="enterpriseNature" property="enterprisenature" jdbcType="INTEGER" />
+    <result column="economicType" property="economictype" jdbcType="INTEGER" />
+    <result column="currency" property="currency" jdbcType="INTEGER" />
+    <result column="registeredCapital" property="registeredcapital" jdbcType="NVARCHAR" />
+    <result column="operationMode" property="operationmode" jdbcType="INTEGER" />
+    <result column="organizationNum" property="organizationnum" jdbcType="NVARCHAR" />
+    <result column="authenticationType" property="authenticationtype" jdbcType="INTEGER" />
+    <result column="openName" property="openname" jdbcType="NVARCHAR" />
+    <result column="fax" property="fax" jdbcType="NVARCHAR" />
+    <result column="email" property="email" jdbcType="NVARCHAR" />
+    <result column="webAddress" property="webaddress" jdbcType="NVARCHAR" />
+    <result column="pharmacyAddress" property="pharmacyaddress" jdbcType="NVARCHAR" />
+    <result column="lockReason" property="lockreason" jdbcType="NVARCHAR" />
+    <result column="lockRemark" property="lockremark" jdbcType="NVARCHAR" />
+    <result column="lockDate" property="lockdate" jdbcType="DATE" />
+    <result column="grade" property="grade" jdbcType="DOUBLE" />
+    <result column="version" property="version" jdbcType="NVARCHAR" />
+    <result column="createDateBak" property="createdatebak" jdbcType="TIMESTAMP" />
+    <result column="checkDateBak" property="checkdatebak" jdbcType="TIMESTAMP" />
+    <result column="parentId" property="parentid" jdbcType="INTEGER" />
+    <result column="shopKeeper" property="shopkeeper" jdbcType="NVARCHAR" />
+    <result column="shopKeeperPhone" property="shopkeeperphone" jdbcType="NVARCHAR" />
+    <result column="manager" property="manager" jdbcType="NVARCHAR" />
+    <result column="managerDistrict" property="managerdistrict" jdbcType="NVARCHAR" />
+    <result column="shareMemberData" property="sharememberdata" jdbcType="INTEGER" />
+    <result column="distPriceType" property="distpricetype" jdbcType="INTEGER" />
+    <result column="addPoint" property="addpoint" jdbcType="DOUBLE" />
+    <result column="DAView" property="daview" jdbcType="INTEGER" />
+    <result column="remoteAudit" property="remoteaudit" jdbcType="INTEGER" />
+    <result column="shareStorage" property="sharestorage" jdbcType="INTEGER" />
+    <result column="priceOrderId" property="priceorderid" jdbcType="INTEGER" />
+    <result column="pharmacyCode" property="pharmacycode" jdbcType="NVARCHAR" />
+    <result column="chainNature" property="chainnature" jdbcType="NVARCHAR" />
+    <result column="distPriceOrder" property="distpriceorder" jdbcType="INTEGER" />
+    <result column="organizationId" property="organizationid" jdbcType="NVARCHAR" />
+    <result column="vipType" property="viptype" jdbcType="NVARCHAR" />
+    <result column="shareStatus" property="sharestatus" jdbcType="NVARCHAR" />
+    <result column="settleType" property="settletype" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, district, businessLicenseId, businessPermitsId, registAddress, representative, 
+    businessPrincipal, qualityPrincipal, qualityAdministrator, businessPractice, chainStoreName, 
+    range, validity, storageAddress, approve, certificateId, healthInsurancePharmacy, 
+    mobilePhone, phone, postalcode, openBank, accounts, dutyId, introduce, status, provinceId, 
+    cityId, regionId, checker, checkDate, checkOpinion, createDate, remark, srvId, chainType, 
+    salesName, implementor, unity, inspectionDate, ranges, used, enterpriseNature, economicType, 
+    currency, registeredCapital, operationMode, organizationNum, authenticationType, 
+    openName, fax, email, webAddress, pharmacyAddress, lockReason, lockRemark, lockDate, 
+    grade, version, createDateBak, checkDateBak, parentId, shopKeeper, shopKeeperPhone, 
+    manager, managerDistrict, shareMemberData, distPriceType, addPoint, DAView, remoteAudit, 
+    shareStorage, priceOrderId, pharmacyCode, chainNature, distPriceOrder, organizationId, 
+    vipType, shareStatus, settleType
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dbo.chain_pharmacy
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+ 
+  
+</mapper>
